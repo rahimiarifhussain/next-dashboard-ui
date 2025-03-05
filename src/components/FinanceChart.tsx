@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import {
   LineChart,
@@ -73,11 +74,12 @@ const data = [
     expense: 4300,
   },
 ];
+
 const FinanceChart = () => {
   return (
-    <div className="bg-white w-full h-full rounded-xl p-4">
+    <div className="bg-white rounded-xl w-full h-full p-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-lg font-semibold">Financal Chart</h1>
+        <h1 className="text-lg font-semibold">Finance</h1>
         <Image src="/moreDark.png" alt="" width={20} height={20} />
       </div>
       <ResponsiveContainer width="100%" height="90%">
@@ -100,15 +102,8 @@ const FinanceChart = () => {
             tickLine={false}
             tickMargin={10}
           />
-          <YAxis
-            axisLine={false}
-            tick={{ fill: "#d1d5db" }}
-            tickLine={false}
-            tickMargin={20}
-          />
-          <Tooltip
-            contentStyle={{ borderRadius: "10px", borderColor: "lightgray" }}
-          />
+          <YAxis axisLine={false} tick={{ fill: "#d1d5db" }} tickLine={false}  tickMargin={20}/>
+          <Tooltip />
           <Legend
             align="center"
             verticalAlign="top"
@@ -116,16 +111,11 @@ const FinanceChart = () => {
           />
           <Line
             type="monotone"
-            dataKey="expense"
+            dataKey="income"
             stroke="#C3EBFA"
             strokeWidth={5}
           />
-          <Line
-            type="monotone"
-            dataKey="income"
-            stroke="#CFCEFF"
-            strokeWidth={5}
-          />
+          <Line type="monotone" dataKey="expense" stroke="#CFCEFF" strokeWidth={5}/>
         </LineChart>
       </ResponsiveContainer>
     </div>

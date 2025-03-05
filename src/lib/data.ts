@@ -915,170 +915,149 @@ export const announcementsData = [
   },
 ];
 
-const today = new Date(); // تاریخ امروز
-const workDays = [3, 4, 5, 6, 7]; // March 03 - 07
+
+// YOU SHOULD CHANGE THE DATES OF THE EVENTS TO THE CURRENT DATE TO SEE THE EVENTS ON THE CALENDAR
 export const calendarEvents = [
   {
     title: "Math",
     allDay: false,
-    start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 8, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 8, 45),
+    start: new Date(2024, 7, 12, 8, 0),
+    end: new Date(2024, 7, 12, 8, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 9, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 9, 45),
+    start: new Date(2024, 7, 12, 9, 0),
+    end: new Date(2024, 7, 12, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-     start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10, 45),
+    start: new Date(2024, 7, 12, 10, 0),
+    end: new Date(2024, 7, 12, 10, 45),
   },
-
-{
+  {
     title: "Physics",
     allDay: false,
-  start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 11, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 11, 45),
+    start: new Date(2024, 7, 12, 11, 0),
+    end: new Date(2024, 7, 12, 11, 45),
   },
   {
     title: "Chemistry",
     allDay: false,
-     start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 12, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 12, 45),
+    start: new Date(2024, 7, 12, 13, 0),
+    end: new Date(2024, 7, 12, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 13, 45),
+    start: new Date(2024, 7, 12, 14, 0),
+    end: new Date(2024, 7, 12, 14, 45),
   },
- {
+  {
     title: "English",
     allDay: false,
-     start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 14, 45),
+    start: new Date(2024, 7, 13, 9, 0),
+    end: new Date(2024, 7, 13, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-     start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 45),
+    start: new Date(2024, 7, 13, 10, 0),
+    end: new Date(2024, 7, 13, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 16, 0),
-    end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 16, 45),
+    start: new Date(2024, 7, 13, 11, 0),
+    end: new Date(2024, 7, 13, 11, 45),
+  },
+
+  {
+    title: "History",
+    allDay: false,
+    start: new Date(2024, 7, 13, 14, 0),
+    end: new Date(2024, 7, 13, 14, 45),
   },
   {
-    title: "Physics",
+    title: "Math",
     allDay: false,
-    start: new Date(2025, 2, 3, 8, 0), // March (Month index 2)
-    end: new Date(2025, 2, 3, 8, 45),
+    start: new Date(2024, 7, 14, 8, 0),
+    end: new Date(2024, 7, 14, 8, 45),
+  },
+  {
+    title: "Biology",
+    allDay: false,
+    start: new Date(2024, 7, 14, 10, 0),
+    end: new Date(2024, 7, 14, 10, 45),
+  },
+
+  {
+    title: "Chemistry",
+    allDay: false,
+    start: new Date(2024, 7, 14, 13, 0),
+    end: new Date(2024, 7, 14, 13, 45),
+  },
+  {
+    title: "History",
+    allDay: false,
+    start: new Date(2024, 7, 14, 14, 0),
+    end: new Date(2024, 7, 13, 14, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2025, 2, 4, 8, 0),
-    end: new Date(2025, 2, 4, 8, 45),
+    start: new Date(2024, 7, 15, 9, 0),
+    end: new Date(2024, 7, 15, 9, 45),
   },
-   {
-    title: "Work Day",
+  {
+    title: "Biology",
     allDay: false,
-    start: new Date(2025, 2, 6,10,0),
-    end: new Date(2025, 2, 6,10,45),
+    start: new Date(2024, 7, 15, 10, 0),
+    end: new Date(2024, 7, 15, 10, 45),
+  },
+  {
+    title: "Physics",
+    allDay: false,
+    start: new Date(2024, 7, 15, 11, 0),
+    end: new Date(2024, 7, 15, 11, 45),
   },
 
-  // سایر رویدادها را به همین ترتیب تغییر دهید...
+  {
+    title: "History",
+    allDay: false,
+    start: new Date(2024, 7, 15, 14, 0),
+    end: new Date(2024, 7, 15, 14, 45),
+  },
+  {
+    title: "Math",
+    allDay: false,
+    start: new Date(2024, 7, 16, 8, 0),
+    end: new Date(2024, 7, 16, 8, 45),
+  },
+  {
+    title: "English",
+    allDay: false,
+    start: new Date(2024, 7, 16, 9, 0),
+    end: new Date(2024, 7, 16, 9, 45),
+  },
+
+  {
+    title: "Physics",
+    allDay: false,
+    start: new Date(2024, 7, 16, 11, 0),
+    end: new Date(2024, 7, 16, 11, 45),
+  },
+  {
+    title: "Chemistry",
+    allDay: false,
+    start: new Date(2024, 7, 16, 13, 0),
+    end: new Date(2024, 7, 16, 13, 45),
+  },
+  {
+    title: "History",
+    allDay: false,
+    start: new Date(2024, 7, 16, 14, 0),
+    end: new Date(2024, 7, 16, 14, 45),
+  },
 ];
-
-
-// export const calendarEvents = [
-//   {
-//     title: "Math",
-//     allDay: false,
-//     start: new Date(2025, 3,2, 1, 0), // Updated to February 24, 2025
-//     end: new Date(2025, 3, 2, 1, 0),   // Updated to February 24, 2025
-//   },
-//   {
-//     title: "English",
-//     allDay: false,
-//     start: new Date(2025, 1, 25, 9, 0),  // Updated to February 25, 2025
-//     end: new Date(2025, 1, 25, 9, 45),   // Updated to February 25, 2025
-//   },
-//   {
-//     title: "Biology",
-//     allDay: false,
-//     start: new Date(2025, 1, 26, 10, 0), // Updated to February 26, 2025
-//     end: new Date(2025, 1, 26, 10, 45),  // Updated to February 26, 2025
-//   },
-//   {
-//     title: "Physics",
-//     allDay: false,
-//     start: new Date(2025, 1, 26, 11, 0), // Updated to February 26, 2025
-//     end: new Date(2025, 1, 26, 11, 45),  // Updated to February 26, 2025
-//   },
-//   {
-//     title: "Chemistry",
-//     allDay: false,
-//     start: new Date(2025, 1, 26, 13, 0), // Updated to February 26, 2025
-//     end: new Date(2025, 1, 26, 13, 45),  // Updated to February 26, 2025
-//   },
-//   {
-//     title: "History",
-//     allDay: false,
-//     start: new Date(2025, 1, 26, 14, 0), // Updated to February 26, 2025
-//     end: new Date(2025, 1, 26, 14, 45),  // Updated to February 26, 2025
-//   },
-//   {
-//     title: "English",
-//     allDay: false,
-//     start: new Date(2025, 1, 27, 9, 0),  // Updated to February 27, 2025
-//     end: new Date(2025, 1, 27, 9, 45),   // Updated to February 27, 2025
-//   },
-//   {
-//     title: "Biology",
-//     allDay: false,
-//     start: new Date(2025, 1, 27, 10, 0), // Updated to February 27, 2025
-//     end: new Date(2025, 1, 27, 10, 45),  // Updated to February 27, 2025
-//   },
-//   {
-//     title: "Physics",
-//     allDay: false,
-//     start: new Date(2025, 1, 27, 11, 0), // Updated to February 27, 2025
-//     end: new Date(2025, 1, 27, 11, 45),  // Updated to February 27, 2025
-//   },
-//   {
-//     title: "History",
-//     allDay: false,
-//     start: new Date(2025, 1, 27, 14, 0), // Updated to February 27, 2025
-//     end: new Date(2025, 1, 27, 14, 45),  // Updated to February 27, 2025
-//   },
-//   {
-//     title: "Math",
-//     allDay: false,
-//     start: new Date(2025, 1, 28, 8, 0),  // Updated to February 28, 2025
-//     end: new Date(2025, 1, 28, 8, 45),   // Updated to February 28, 2025
-//   },
-//   {
-//     title: "Biology",
-//     allDay: false,
-//     start: new Date(2025, 1, 28, 10, 0), // Updated to February 28, 2025
-//     end: new Date(2025, 1, 28, 10, 45),  // Updated to February 28, 2025
-//   },
-//   {
-//     title: "Chemistry",
-//     allDay: false,
-//     start: new Date(2025, 1, 28, 13, 0), // Updated to February 28, 2025
-//     end: new Date(2025, 1, 28, 13, 45),  // Updated to February 28, 2025
-//   },
-//   {
-//     title: "History",
-//     allDay: false,
-//     start: new Date(2025, 1, 28, 14, 0), // Updated to February 28, 2025
-//     end: new Date(2025, 1, 28, 14, 45),  // Updated to February 28, 2025
-//   },
-// ];

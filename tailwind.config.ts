@@ -15,13 +15,12 @@ const config: Config = {
       },
       colors: {
         lamaSky: "#C3EBFA",
-        lamaSkyLight: "#EDF9FD",   
-        lamaPurple: "#CFCEFF",   
-        lamaSkyPurpleLight: "#F1F0FF",   
-        lamaYellow: "#FAE27C",   
-        lamaSkyYellowLight: "#FEFCE8",   
-        
-      }
+        lamaSkyLight: "#EDF9FD",
+        lamaPurple: "#CFCEFF",
+        lamaPurpleLight: "#F1F0FF",
+        lamaYellow: "#FAE27C",
+        lamaYellowLight: "#FEFCE8",
+      },
     },
   },
   plugins: [],
