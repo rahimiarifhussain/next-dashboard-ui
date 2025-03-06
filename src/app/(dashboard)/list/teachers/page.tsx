@@ -4,11 +4,14 @@ import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import { role, teachersData } from "@/lib/data";
 import prisma from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
 import { Class, Subject, Teacher } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+// import { clearScreenDown } from "readline";
 
-type TeacherList = Teacher &{ subjects:Subject[] } & {classes: Class[]}
+type TeacherList = Teacher & { subjects: Subject[] } & { classes: Class[] };
 
 // type Teacher = {
 //   id: number;
@@ -76,8 +79,12 @@ const renderRow = (item: TeacherList) => (
       </div>
     </td>
     <td className="hidden md:table-cell">{item.username}</td>
-    <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-    <td className="hidden md:table-cell">{item.classes.join(",")}</td>
+    <td className="hidden md:table-cell">
+      {item.subjects.map((subject) => subject.name).join(",")}
+    </td>
+    <td className="hidden md:table-cell">
+      {item.classes.map((classe) => classe.name).join(",")}
+    </td>
     <td className="hidden md:table-cell">{item.phone}</td>
     <td className="hidden md:table-cell">{item.address}</td>
     <td>
@@ -97,9 +104,27 @@ const renderRow = (item: TeacherList) => (
     </td>
   </tr>
 );
-const TeacherListPage =  async () => {
-  const teacher = await prisma.teacher.findMany();
-  console.log(teacher)
+
+const TeacherListPage = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) => {
+  //  console.log(searchParams);
+  const { page, ...queryParams } = searchParams;
+
+  const p = page ? parseInt(page) : 1;
+  const [data, count] = await prisma.$transaction([
+    prisma.teacher.findMany({
+      include: {
+        subjects: true,
+        classes: true,
+      },
+      take: ITEM_PER_PAGE,
+      skip: ITEM_PER_PAGE * (p - 1),
+    }),
+    prisma.teacher.count(),
+  ]);
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -119,15 +144,15 @@ const TeacherListPage =  async () => {
               // <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
               //   <Image src="/plus.png" alt="" width={14} height={14} />
               // </button>
-              <FormModal table="teacher" type="create"/>
+              <FormModal table="teacher" type="create" />
             )}
           </div>
         </div>
       </div>
       {/* LIST */}
-      <Table columns={columns} renderRow={renderRow} data={teachersData} />
+      <Table columns={columns} renderRow={renderRow} data={data} />
       {/* PAGINATION */}
-      <Pagination />
+      <Pagination page={p} count={count} />
     </div>
   );
 };
