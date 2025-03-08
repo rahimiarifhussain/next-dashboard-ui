@@ -117,7 +117,7 @@ const TeacherListPage = async ({
 
   // URL params condition
 
-  const query : Prisma.TeacherWhereInput = {};
+  let query : Prisma.TeacherWhereInput = {};
 
   if (queryParams) {
     for (const [key, value] of Object.entries(queryParams)) { 
@@ -125,10 +125,28 @@ const TeacherListPage = async ({
         switch (key) {
           case "classId":
             query.lessons = {
-            some: {
+              some: {
                 classId: parseInt(value),
               }
             }
+            break;
+          case "search":
+            query = {
+              OR: [
+                {
+                  name: {
+                    contains: value,
+                    mode: "insensitive",
+                  },
+                },
+                {
+                  email: {
+                    contains: value,
+                    mode: "insensitive",
+                  },
+                },
+              ],
+            };
         }
       }
     }

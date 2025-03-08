@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Class, Prisma, Student } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/settings";
+
 type StudentList = Student & { class: Class };
 // type Student = {
 //   id: number;
@@ -91,16 +92,57 @@ const renderRow = (item: StudentList) => (
   </tr>
 );
 
-const StudentListPage = async () => {
+const StudentListPage = async({
+  searchParams,
+}: {
+  searchParams: {[key:string]:string |undefined}
+  }) => {
+  
+  const {page, ...queryParams} = searchParams;
 
-  const data = await prisma.student.findMany({
-    include: {
-      class: true
-    },
-    take: ITEM_PER_PAGE,
-    
-    
-  });
+  const p = page ? parseInt(page) : 1;
+  
+
+  let query: Prisma.StudentWhereInput = {};
+  if (queryParams) {
+    for (const [key, value] of Object.entries(queryParams)) { 
+      if (value !== undefined) {
+        switch (key) {
+          case "search":
+            query = {
+              OR: [
+                {
+                  name: {
+                    contains: value,
+                    mode: "insensitive",
+                  }
+                },
+                {
+                  email: {
+                    contains: value,
+                    mode: "insensitive",
+                  }
+                }
+              ]
+            }
+        }
+      }
+    }
+  }
+
+  const [data, count] = await prisma.$transaction([
+    prisma.student.findMany({
+      where: query,
+      include: {
+        class: true,
+      },
+      take: ITEM_PER_PAGE,
+      skip: (p - 1) * ITEM_PER_PAGE,
+    }),
+
+    prisma.student.count({where: query}),
+  ]);
+ 
   console.log(data)
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -128,7 +170,7 @@ const StudentListPage = async () => {
       {/* LIST */}
       <Table columns={columns} renderRow={renderRow} data={data} />
       {/* PAGINATION */}
-      <Pagination count={15} page={2} />
+      <Pagination count={count} page={p} />
     </div>
   );
 };
