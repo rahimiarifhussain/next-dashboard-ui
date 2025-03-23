@@ -92,20 +92,18 @@ const renderRow = (item: StudentList) => (
   </tr>
 );
 
-const StudentListPage = async({
+const StudentListPage = async ({
   searchParams,
 }: {
-  searchParams: {[key:string]:string |undefined}
-  }) => {
-  
-  const {page, ...queryParams} = searchParams;
+  searchParams: { [key: string]: string | undefined };
+}) => {
+  const { page, ...queryParams } = searchParams;
 
   const p = page ? parseInt(page) : 1;
-  
 
   let query: Prisma.StudentWhereInput = {};
   if (queryParams) {
-    for (const [key, value] of Object.entries(queryParams)) { 
+    for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
         switch (key) {
           case "search":
@@ -115,16 +113,29 @@ const StudentListPage = async({
                   name: {
                     contains: value,
                     mode: "insensitive",
-                  }
+                  },
                 },
                 {
                   email: {
                     contains: value,
                     mode: "insensitive",
-                  }
-                }
-              ]
-            }
+                  },
+                },
+              ],
+            };
+            break;
+          case "TeacherId":
+            query = {
+              
+              class: {
+                lessons: {
+                  some: {
+                    teacherId: value,
+                  },
+                },
+              },
+            };
+            break;
         }
       }
     }
@@ -140,10 +151,10 @@ const StudentListPage = async({
       skip: (p - 1) * ITEM_PER_PAGE,
     }),
 
-    prisma.student.count({where: query}),
+    prisma.student.count({ where: query }),
   ]);
- 
-  console.log(data)
+
+  console.log(data);
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
       {/* TOP */}
@@ -162,7 +173,7 @@ const StudentListPage = async({
               // <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
               //   <Image src="/plus.png" alt="" width={14} height={14} />
               // </button>
-              <FormModal table="student" type="create"/>
+              <FormModal table="student" type="create" />
             )}
           </div>
         </div>

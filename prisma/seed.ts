@@ -109,25 +109,102 @@ async function main() {
   }
 
   // STUDENT
-  for (let i = 1; i <= 50; i++) {
-    await prisma.student.create({
-      data: {
-        id: `student${i}`, 
-        username: `student${i}`, 
-        name: `SName${i}`,
-        surname: `SSurname ${i}`,
-        email: `student${i}@example.com`,
-        phone: `987-654-321${i}`,
-        address: `Address${i}`,
-        bloodType: "O-",
-        sex: i % 2 === 0 ? UserSex.MALE : UserSex.FEMALE,
-        parentId: `parentId${Math.ceil(i / 2) % 25 || 25}`, 
-        gradeId: (i % 6) + 1, 
-        classId: (i % 6) + 1, 
-        birthday: new Date(new Date().setFullYear(new Date().getFullYear() - 10)),
-      },
-    });
-  }
+  // for (let i = 1; i <= 50; i++) {
+  //   await prisma.student.create({
+  //     data: {
+  //       id: `student${i}`, 
+  //       username: `student${i}`, 
+  //       name: `SName${i}`,
+  //       surname: `SSurname ${i}`,
+  //       email: `student${i}@example.com`,
+  //       phone: `987-654-321${i}`,
+  //       address: `Address${i}`,
+  //       bloodType: "O-",
+  //       sex: i % 2 === 0 ? UserSex.MALE : UserSex.FEMALE,
+  //       parentId: `parentId${Math.ceil(i / 2) % 25 || 25}`, 
+  //       gradeId: (i % 6) + 1, 
+  //       classId: (i % 6) + 1, 
+  //       birthday: new Date(new Date().setFullYear(new Date().getFullYear() - 10)),
+  //     },
+  //   });
+  // }
+// Define an array of first names
+const firstNames = [
+  "Ahmad",
+  "Ali",
+  "Hussain",
+  "Mohammed",
+  "Abdullah",
+  "Omar",
+  "Abdulrahman",
+  "Khalid",
+  "Sami",
+  "Faisal",
+  "Abdulaziz",
+  "Saud",
+  "Mansour",
+  "Nasser",
+  "Fahad",
+  "Turki",
+  "Sultan",
+  "Abdulmalek",
+  "Majed",
+  "Rashid",
+  "Nawaf",
+  "Jasser",
+  "Mishari",
+  "Meshari",
+  "Zayed",
+  "Khalifa",
+];
+
+// Define an array of last names
+const lastNames = [
+  "Al-Saud",
+  "Al-Khalifa",
+  "Al-Thani",
+  "Al-Nahyan",
+  "Al-Maktoum",
+  "Al-Sabah",
+  "Al-Jaber",
+  "Al-Kuwari",
+  "Al-Mansour",
+  "Al-Shammari",
+  "Al-Otaibi",
+  "Al-Dossari",
+  "Al-Farhan",
+  "Al-Harbi",
+  "Al-Mutairi",
+  "Al-Qahtani",
+  "Al-Shahri",
+  "Al-Sulaimani",
+  "Al-Tamimi",
+  "Al-Zahrani",
+];
+
+// STUDENT
+for (let i = 1; i <= 50; i++) {
+  const firstNameIndex = (i - 1) % firstNames.length;
+  const lastNameIndex = Math.floor((i - 1) / firstNames.length) % lastNames.length;
+
+  await prisma.student.create({
+    data: {
+      id: `student${i}`,
+      username: `student${i}`,
+      name: firstNames[firstNameIndex],
+      surname: lastNames[lastNameIndex],
+      email: `student${i}@example.com`,
+      phone: `987-654-321${i}`,
+      address: `Address${i}`,
+      bloodType: "O-",
+      sex: i % 2 === 0 ? UserSex.MALE : UserSex.FEMALE,
+      parentId: `parentId${Math.ceil(i / 2) % 25 || 25}`,
+      gradeId: (i % 6) + 1,
+      classId: (i % 6) + 1,
+      birthday: new Date(new Date().setFullYear(new Date().getFullYear() - 10)),
+    },
+  });
+}
 
   // EXAM
   for (let i = 1; i <= 10; i++) {
